@@ -1,0 +1,7 @@
+#include <stdfile.h>
+
+int main(){
+    string content = "aaa";
+    file.write("aaa.txt", content);
+    return 0;
+}
