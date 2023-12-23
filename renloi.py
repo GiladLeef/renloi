@@ -15,7 +15,7 @@ def process_file(input_file, output_file, keep, run, debug):
     with open(output_file + ".c", 'w', encoding='utf-8') as f:
         f.write(output_code)
     compile_command = [
-        'gcc',
+        'g++',
         output_file + ".c",
         '-IC:\\renloi\\include',  # Double-backslashes for Windows paths
         '-O3',

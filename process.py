@@ -1,10 +1,7 @@
 import re
 
 def replace_syntax(input_code):
-    output_code = input_code.replace("print", "printf")
     output_code = output_code.replace("scan", "scanf")
-    output_code = output_code.replace("file.read", "file_read")
-    output_code = output_code.replace("file.write", "file_write")
     output_code = re.sub(r'string (\w+)', r'char \1[]', output_code)
     output_code = re.sub(r'char (\w+)\[\] = read\(([^)]+)\);', r'char *\1 = read(\2);', output_code)
 
@@ -17,22 +14,26 @@ def foreach_syntax(input_code):
     return output_code
 
 def print_syntax(input_code):
-    # Define a dictionary to map data type specifiers to format specifiers
-    type_mapping = {
-        'int': '%d',
-        'char': '%c',
-        'string': '%s',
-        'float': '%f',
-        'hex': '%x',  # or '%X' for uppercase
-        'octal': '%o',
-        'unsigned': '%u',
-        'pointer': '%p',
-        'scientific': '%e',  # or '%E' for uppercase
-        'compact_scientific': '%g',  # or '%G' for uppercase
-        'hex_float': '%a',  # or '%A' for uppercase
-    }
+    # Use regular expression to find print statements with variables
+    pattern = re.compile(r'print\s*\(([^)]+)\)')
 
-    pattern = r'printf\((\w+): (\w+)\);'
+    # Find matches in the input code
+    match = pattern.search(input_code)
 
-    output_code = re.sub(pattern, lambda match: f'printf("{type_mapping.get(match.group(1), match.group(1))}", {match.group(2)});', input_code)
-    return output_code
+    # If a match is found, replace the print statement
+    if match:
+        print_statement = match.group(1)
+        
+        # Replace '+' with ' << ' inside the print statement
+        replaced_statement = re.sub(r'\s*\+\s*', ' << ', print_statement)
+
+        # Construct the std::cout line
+        cout_line = f'std::cout << {replaced_statement} << std::endl;'
+
+        # Replace the print statement with the std::cout line in the entire code
+        modified_code = input_code.replace(match.group(0), cout_line)
+
+        return modified_code
+    else:
+        # If no match is found, return the input code as is
+        return input_code

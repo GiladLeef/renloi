@@ -1,48 +1,34 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 
-char *file_read(const char *filename) {
-    FILE *file = fopen(filename, "r");
-    if (file == NULL) {
-        fprintf(stderr, "Error opening file %s for reading.\n", filename);
-        exit(EXIT_FAILURE);
+class File {
+public:
+    static std::string read(const char *filename) {
+        std::ifstream file(filename);
+        if (!file.is_open()) {
+            std::cerr << "Error opening file " << filename << " for reading." << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
+        // Read the file content into a string
+        std::ostringstream content_stream;
+        content_stream << file.rdbuf();
+        std::string content = content_stream.str();
+
+        return content;
     }
 
-    // Determine the size of the file
-    fseek(file, 0, SEEK_END);
-    long file_size = ftell(file);
-    fseek(file, 0, SEEK_SET);
+    static void write(const char *filename, const std::string &content) {
+        std::ofstream file(filename);
+        if (!file.is_open()) {
+            std::cerr << "Error opening file " << filename << " for writing." << std::endl;
+            return;
+        }
 
-    // Allocate memory for the file content
-    char *content = (char *)malloc(file_size + 1);
+        // Write the content to the file
+        file << content;
 
-    if (content == NULL) {
-        fprintf(stderr, "Memory allocation failed.\n");
-        exit(EXIT_FAILURE);
+        // The file will be closed automatically when 'file' goes out of scope
     }
-
-    // Read the file content into the allocated memory
-    fread(content, 1, file_size, file);
-
-    // Null-terminate the string
-    content[file_size] = '\0';
-
-    // Close the file
-    fclose(file);
-
-    return content;
-}
-
-void file_write(const char *filename, const char *content) {
-    FILE *file = fopen(filename, "w");
-    if (file == NULL) {
-        fprintf(stderr, "Error opening file %s for writing.\n", filename);
-        return;
-    }
-
-    // Write the content to the file
-    fprintf(file, "%s", content);
-
-    // Close the file
-    fclose(file);
-}
+};
