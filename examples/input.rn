@@ -1,0 +1,15 @@
+#include <stdfile.h>
+
+class Man {
+  public: 
+    int age;
+    
+};
+
+int main() {
+    Man jonny;
+    print("Enter jonny's age: ");
+    input(jonny.age);
+    print("Jonnys age is " + jonny.age);
+    return 0;
+}

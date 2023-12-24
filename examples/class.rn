@@ -1,0 +1,13 @@
+#include <stdfile.h>
+
+class Man {
+  public: 
+    int age;  
+};
+
+int main() {
+    Man jonny;
+    jonny.age = 8;
+    print(jonny.age);
+    return 0;
+}
