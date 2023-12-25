@@ -1,0 +1,10 @@
+#include <iostream>
+
+int main() {
+  int array[3];
+  foreach (int i : array){
+    print(i);
+  }  
+  print(array[1]);
+  return 0;
+}
