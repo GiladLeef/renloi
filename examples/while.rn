@@ -7,7 +7,7 @@ int main() {
     // Define the while loop
     while (counter <= 5) {
         // Print the current value of the counter
-        print("Counter: " + counter);
+        print("Counter: ", counter);
 
         // Increment the counter
         counter++;
