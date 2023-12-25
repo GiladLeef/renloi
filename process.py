@@ -17,7 +17,7 @@ def foreach_syntax(input_code):
 
 def print_syntax(input_code):
     # Use regular expression to find print statements with variables or string literals
-    pattern = re.compile(r'print\s*\(([^)]+)\)')
+    pattern = re.compile(r'print\s*\(([^()]+(?:\([^()]*\)[^()]*)*)\)')
 
     # Find matches in the input code
     matches = pattern.finditer(input_code)
