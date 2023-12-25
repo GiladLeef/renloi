@@ -19,7 +19,8 @@ public:
         return content;
     }
 
-    static void write(const char *filename, const std::string &content) {
+    template <typename T>
+    static void write(const char *filename, const T &content) {
         std::ofstream file(filename);
         if (!file.is_open()) {
             std::cerr << "Error opening file " << filename << " for writing." << std::endl;
