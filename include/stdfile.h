@@ -8,7 +8,7 @@ public:
     static void write(const char *filename, const T &content) {
         std::ofstream file(filename);
         if (!file.is_open()) {
-            std::cerr << "Error opening file " << filename << " for writing: " << strerror(errno) << std::endl;
+            std::cerr << "Error opening file " << filename << " for writing." << std::endl;
             return;
         }
 
