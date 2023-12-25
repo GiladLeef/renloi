@@ -13,12 +13,6 @@ def replace_syntax(input_code):
 
     return output_code
 
-def foreach_syntax(input_code):
-    pattern = re.compile(r'foreach\s*\(\s*(\w+)\s+(\w+)\s*:\s*(\w+)\s*\)')
-    output_code = re.sub(pattern, r'for (\1 \2 = 0; \2 < sizeof(\3) / sizeof(\3[0]); \2++)', input_code)
-
-    return output_code
-
 def print_syntax(input_code):
     # Use regular expression to find print statements with variables or string literals
     pattern = re.compile(r'print\s*\(([^()]+(?:\([^()]*\)[^()]*)*)\)')
