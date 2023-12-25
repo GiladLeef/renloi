@@ -8,6 +8,7 @@ def process_file(input_file, output_file, keep, run, debug):
     with open(input_file, 'r', encoding='utf-8') as f:
         input_code = f.read()
 
+    output_code = process.add_namespace_std(input_code)
     output_code = process.replace_syntax(input_code)
 
     with open(output_file + ".c", 'w', encoding='utf-8') as f:
