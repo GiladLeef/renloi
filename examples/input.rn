@@ -10,6 +10,6 @@ int main() {
     Man jonny;
     print("Enter jonny's age: ");
     input(jonny.age);
-    print("Jonnys age is " + jonny.age);
+    print("Jonnys age is ", jonny.age);
     return 0;
 }
