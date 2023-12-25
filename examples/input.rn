@@ -1,5 +1,3 @@
-#include <stdfile.h>
-
 class Man {
   public: 
     int age;
