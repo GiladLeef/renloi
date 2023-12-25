@@ -4,21 +4,6 @@
 
 class File {
 public:
-    // Specialization for string content
-    static void write(const char *filename, const char *content) {
-        std::ofstream file(filename);
-        if (!file.is_open()) {
-            std::cerr << "Error opening file " << filename << " for writing." << std::endl;
-            return;
-        }
-
-        // Write the content to the file
-        file << content;
-
-        // The file will be closed automatically when 'file' goes out of scope
-    }
-
-    // General template for other types
     template <typename T>
     static void write(const char *filename, const T &content) {
         std::ofstream file(filename);
@@ -27,7 +12,7 @@ public:
             return;
         }
 
-        // Convert content to string and write it to the file
+        // Use the << operator to write content to the file
         file << content;
 
         // The file will be closed automatically when 'file' goes out of scope
