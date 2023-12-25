@@ -18,13 +18,13 @@ public:
         return std::round(x);
     }
 
-    static template <typename T>
-    T min(T a, T b) {
+    template <typename T>
+    static T min(T a, T b) {
         return std::min(a, b);
     }
 
-    static template <typename T>
-    T max(T a, T b) {
+    template <typename T>
+    static T max(T a, T b) {
         return std::max(a, b);
     }
 };
