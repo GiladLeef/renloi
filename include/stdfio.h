@@ -5,3 +5,8 @@ template <typename... Args>
 void print(const Args&... args) {
     (std::cout << ... << args) << std::endl;
 }
+
+template<typename T>
+void input(T& variable) {
+    std::cin >> variable;
+}
