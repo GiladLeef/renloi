@@ -1,4 +1,5 @@
 #include <cmath>
+
 class Math {
 public:
     static double sqrt(double x) {
