@@ -5,6 +5,5 @@ int main() {
   foreach (int i : array){
     print(i);
   }  
-  print(array[1]);
   return 0;
 }
