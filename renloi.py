@@ -46,7 +46,7 @@ def main():
     parser.add_argument('-output_file', help='Output file path', default="output")
     parser.add_argument('-run', action='store_true', help='Run the compiled code')
     parser.add_argument('-keep', action='store_true', help='Keep the source file after compilation')
-    parser.add_argument('-debug', action='store_true', help='Keep the source file after compilation')
+    parser.add_argument('-debug', action='store_true', help='Show g++ compilation warnings/errors')
 
     args = parser.parse_args()
 
