@@ -1,0 +1,7 @@
+#include <stdfio.h>
+#include <stdmath.h>
+
+int main(){
+    print(Math.pow(2, 5));
+    return 0;
+}
