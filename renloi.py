@@ -21,6 +21,11 @@ def process_file(input_file, output_file, keep, run, debug):
         '-o',
         os.path.splitext(output_file)[0]  # Using os.path.splitext to get the base name without extension
     ]
+    
+    # Check if the input code contains the specified string
+    if 'include <stdnet.h>' in input_code:
+        compile_command.append('-lcurl')
+        
     # Run gcc command
     if debug:
         print(compile_command)
