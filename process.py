@@ -6,6 +6,8 @@ def replace_syntax(input_code):
     output_code = output_code.replace("File.read", "File::read")
     output_code = output_code.replace("Math.", "Math::")
     output_code = output_code.replace("String.", "String::")
+    output_code = output_code.replace("Net.", "Net::")
+    output_code = output_code.replace("Net.Http.", "Net::Http::")
     #output_code = re.sub(r'string (\w+)', r'char \1[]', output_code)
     #output_code = re.sub(r'char (\w+)\[\] = read\(([^)]+)\);', r'char *\1 = read(\2);', output_code)
 
