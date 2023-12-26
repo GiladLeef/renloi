@@ -11,11 +11,11 @@ def process_file(input_file, output_file, keep, run, debug):
     output_code = process.add_namespace_std(input_code)
     output_code = process.replace_syntax(output_code)
 
-    with open(output_file + ".c", 'w', encoding='utf-8') as f:
+    with open(output_file + ".cpp", 'w', encoding='utf-8') as f:
         f.write(output_code)
     compile_command = [
         'g++',
-        output_file + ".c",
+        output_file + ".cpp",
         '-IC:\\renloi\\include',  # Double-backslashes for Windows paths
         '-O3',
         '-o',
@@ -38,7 +38,7 @@ def process_file(input_file, output_file, keep, run, debug):
 
     # Remove the source file if not specified to keep
     if not keep:
-        os.remove(output_file + ".c")
+        os.remove(output_file + ".cpp")
 
 def main():
     parser = argparse.ArgumentParser(description='Renloi Programming Language Compiler.')
