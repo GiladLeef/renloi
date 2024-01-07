@@ -9,7 +9,7 @@ def replace_syntax(input_code):
     output_code = output_code.replace("Net.", "Net::")
     output_code = output_code.replace("Net.Http.", "Net::Http::")
     output_code = output_code.replace("ThreadPool.", "ThreadPool::")
-    output_code = output_code.replace("this_thread.", "this_thread::")
+    output_code = output_code.replace("thread.get_id()", "this_thread::get_id()")
     #output_code = re.sub(r'string (\w+)', r'char \1[]', output_code)
     #output_code = re.sub(r'char (\w+)\[\] = read\(([^)]+)\);', r'char *\1 = read(\2);', output_code)
 
