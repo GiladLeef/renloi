@@ -2,8 +2,10 @@
 
 int main() {
   int array[3];
-  foreach (int i : array){
+  
+  for (int i : array){
     print(i);
   }  
+
   return 0;
 }
