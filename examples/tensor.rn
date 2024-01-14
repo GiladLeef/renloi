@@ -4,8 +4,8 @@
 int main() {
     // Create a tensor of integers
     Tensor<int> myTensor(16, 16);
-
     myTensor.init();
+
     // Display the tensor
     myTensor.display();
 
