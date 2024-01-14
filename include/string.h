@@ -5,7 +5,7 @@ class String {
 public:
     static std::string replaceString(const std::string& original, const std::string& toReplace, const std::string& replacement) {
         std::string result = original;
-        size_t pos = 0;
+        size pos = 0;
 
         while ((pos = result.find(toReplace, pos)) != std::string::npos) {
             result.replace(pos, toReplace.length(), replacement);

@@ -64,8 +64,8 @@ public:
         }
 
         // Callback function to write the received data into a string
-        static size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* response) {
-            size_t totalSize = size * nmemb;
+        static size WriteCallback(void* contents, size size, size nmemb, std::string* response) {
+            size totalSize = size * nmemb;
             response->append(static_cast<char*>(contents), totalSize);
             return totalSize;
         }

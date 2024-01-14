@@ -6,7 +6,7 @@ void taskFunction(int id) {
 }
 
 int main() {
-    const size_t num_threads = 4;
+    const size num_threads = 4;
     ThreadPool threadPool(num_threads);
 
     // Add tasks to the thread pool

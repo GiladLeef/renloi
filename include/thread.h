@@ -8,8 +8,8 @@
 class ThreadPool {
 public:
     // Constructor: Initialize the thread pool with the specified number of threads
-    ThreadPool(size_t num_threads) : threads_(), is_stopping_(false) {
-        for (size_t i = 0; i < num_threads; ++i) {
+    ThreadPool(size num_threads) : threads_(), is_stopping_(false) {
+        for (size i = 0; i < num_threads; ++i) {
             threads_.emplace_back(&ThreadPool::workerThread, this);
         }
     }
@@ -82,6 +82,6 @@ private:
 };
 
 // Helper function to create a ThreadPool with a specified number of threads
-ThreadPool createThreadPool(size_t num_threads) {
+ThreadPool createThreadPool(size num_threads) {
     return ThreadPool(num_threads);
 }

@@ -94,7 +94,7 @@ class bint {
         long long to_long_long() const;
 
         // Random number generating functions:
-        friend bint big_random(size_t);
+        friend bint big_random(size);
 };
 
 #endif  // BIG_INT_HPP
@@ -134,7 +134,7 @@ bool is_valid_number(const std::string& num) {
 */
 
 void strip_leading_zeroes(std::string& num) {
-    size_t i;
+    size i;
     for (i = 0; i < num.size(); i++)
         if (num[i] != '0')
             break;
@@ -152,7 +152,7 @@ void strip_leading_zeroes(std::string& num) {
     Adds a given number of leading zeroes to a string-represented integer `num`.
 */
 
-void add_leading_zeroes(std::string& num, size_t num_zeroes) {
+void add_leading_zeroes(std::string& num, size num_zeroes) {
     num = std::string(num_zeroes, '0') + num;
 }
 
@@ -163,7 +163,7 @@ void add_leading_zeroes(std::string& num, size_t num_zeroes) {
     Adds a given number of trailing zeroes to a string-represented integer `num`.
 */
 
-void add_trailing_zeroes(std::string& num, size_t num_zeroes) {
+void add_trailing_zeroes(std::string& num, size num_zeroes) {
     num += std::string(num_zeroes, '0');
 }
 
@@ -205,7 +205,7 @@ std::tuple<std::string, std::string> get_larger_and_smaller(const std::string& n
 bool is_power_of_10(const std::string& num){
     if (num[0] != '1')
         return false;
-    for (size_t i = 1; i < num.size(); i++)
+    for (size i = 1; i < num.size(); i++)
         if (num[i] != '0')
             return false;
 
@@ -230,7 +230,7 @@ bool is_power_of_10(const std::string& num){
 
 // when the number of digits are not specified, a random value is used for it
 // which is kept below the following:
-const size_t MAX_RANDOM_LENGTH = 1000;
+const size MAX_RANDOM_LENGTH = 1000;
 
 
 /*
@@ -239,7 +239,7 @@ const size_t MAX_RANDOM_LENGTH = 1000;
     Returns a random bint with a specific number of digits.
 */
 
-bint big_random(size_t num_digits = 0) {
+bint big_random(size num_digits = 0) {
     std::random_device rand_generator;      // true random number generator
 
     if (num_digits == 0)    // the number of digits were not specified
@@ -862,7 +862,7 @@ bint abs(const bint& num) {
     NOTE: exponent should be a non-negative integer.
 */
 
-bint big_pow10(size_t exp) {
+bint big_pow10(size exp) {
     return bint("1" + std::string(exp, '0'));
 }
 
@@ -1245,8 +1245,8 @@ bint bint::operator*(const bint& num) const {
         std::string larger, smaller;
         std::tie(larger, smaller) = get_larger_and_smaller(this->value, num.value);
 
-        size_t half_length = larger.size() / 2;
-        auto half_length_ceil = (size_t) ceil(larger.size() / 2.0);
+        size half_length = larger.size() / 2;
+        auto half_length_ceil = (size) ceil(larger.size() / 2.0);
 
         bint num1_high, num1_low;
         num1_high = larger.substr(0, half_length);
@@ -1338,13 +1338,13 @@ bint bint::operator/(const bint& num) const {
     else if (abs_dividend == abs_divisor)
         quotient = 1;
     else if (is_power_of_10(abs_divisor.value)) { // if divisor is a power of 10 do optimised calculation
-        size_t digits_in_quotient = abs_dividend.value.size() - abs_divisor.value.size() + 1;
+        size digits_in_quotient = abs_dividend.value.size() - abs_divisor.value.size() + 1;
         quotient.value = abs_dividend.value.substr(0, digits_in_quotient);
     }
     else {
         quotient.value = "";    // the value is cleared as digits will be appended
         bint chunk, chunk_quotient, chunk_remainder;
-        size_t chunk_index = 0;
+        size chunk_index = 0;
         chunk_remainder.value = abs_dividend.value.substr(chunk_index, abs_divisor.value.size() - 1);
         chunk_index = abs_divisor.value.size() - 1;
         while (chunk_index < abs_dividend.value.size()) {
@@ -1403,7 +1403,7 @@ bint bint::operator%(const bint& num) const {
     else if (abs_dividend < abs_divisor)
         remainder = abs_dividend;
     else if (is_power_of_10(num.value)){ // if num is a power of 10 use optimised calculation
-        size_t no_of_zeroes = num.value.size() - 1;
+        size no_of_zeroes = num.value.size() - 1;
         remainder.value = abs_dividend.value.substr(abs_dividend.value.size() - no_of_zeroes);
     } 
     else {
