@@ -1,4 +1,4 @@
-#include <stdfio.h>
+#include <std.h>
 
 class Man {
   public: 

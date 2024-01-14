@@ -1,5 +1,5 @@
-#include <stdfio.h>
-#include <stdmath.h>
+#include <std.h>
+#include <math.h>
 
 int main(){
     print(Math.pow(2, 5));

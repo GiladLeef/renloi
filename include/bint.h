@@ -3,7 +3,7 @@
 
 #include <iostream>
 
-class Bint {
+class bint {
     std::string value;
     char sign;
 

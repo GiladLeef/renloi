@@ -1,0 +1,8 @@
+#include <std.h>
+#include <bint.h>
+
+int main(){
+    bint a;
+    a = "1131342145235246573";
+    print(a);
+}

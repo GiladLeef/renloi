@@ -1,5 +1,5 @@
-#include <stdfio.h>
-#include <stdthread.h>
+#include <std.h>
+#include <thread.h>
 
 void taskFunction(int id) {
     print("Task ", id, " is running on thread ",  thread.get_id());
