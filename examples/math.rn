@@ -3,5 +3,5 @@
 
 int main(){
     print(Math.pow(2, 5));
-    return 0;
+    print(Math.tan(20));
 }
