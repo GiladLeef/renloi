@@ -41,4 +41,28 @@ public:
     static T max(T a, T b) {
         return std::max(a, b);
     }
+    // Trigonometric functions
+    static double sin(double x) {
+        return std::sin(x);
+    }
+
+    static double cos(double x) {
+        return std::cos(x);
+    }
+
+    static double tan(double x) {
+        return std::tan(x);
+    }
+
+    static double asin(double x) {
+        return std::asin(x);
+    }
+
+    static double acos(double x) {
+        return std::acos(x);
+    }
+
+    static double atan(double x) {
+        return std::atan(x);
+    }
 };
