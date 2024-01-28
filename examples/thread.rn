@@ -2,7 +2,7 @@
 #include <thread.h>
 
 void taskFunction(int id) {
-    print("Task ", id, " is running on thread ",  thread.get_id());
+    print("Task ", id, " is running on thread ",  thread.id());
 }
 
 int main() {
