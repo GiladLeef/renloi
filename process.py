@@ -9,7 +9,7 @@ def replace_syntax(input_code):
     output_code = output_code.replace("Net.", "Net::")
     output_code = output_code.replace("Net.Http.", "Net::Http::")
     output_code = output_code.replace("ThreadPool.", "ThreadPool::")
-    output_code = output_code.replace("thread.get_id()", "this_thread::get_id()")
+    output_code = output_code.replace("thread.id()", "this_thread::get_id()")
 
     return output_code
     
