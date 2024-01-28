@@ -16,6 +16,9 @@ def process_file(input_file, output_file, keep, run, debug):
 
     compile_command = [
         'g++',
+        '-static-libgcc',
+        '-static-libstdc++',
+        '-static',
         output_file + ".cpp",
         '-O3',
         '-o',
