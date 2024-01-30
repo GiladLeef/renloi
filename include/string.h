@@ -15,7 +15,7 @@ public:
         return result;
     }
 
-    static std::string upperCase(const std::string& str) {
+    static std::string toUpperCase(const std::string& str) {
         std::string result = str;
         for (char& c : result) {
             c = std::toupper(c);
@@ -23,7 +23,7 @@ public:
         return result;
     }
 
-    static std::string lowerCase(const std::string& str) {
+    static std::string toLowerCase(const std::string& str) {
         std::string result = str;
         for (char& c : result) {
             c = std::tolower(c);
@@ -52,4 +52,5 @@ public:
 
         return str.substr(first, last - first + 1);
     }
+
 };
