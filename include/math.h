@@ -66,5 +66,11 @@ public:
 
             return dist(mt);
         }
+        static double randomDouble(double low, double high) {
+            std::random_device rd;
+            std::mt19937 mt(rd());
+            std::uniform_real_distribution<double> dist(low, high);
+            return dist(mt);
+        }
     };
 };
