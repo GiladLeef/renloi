@@ -3,7 +3,7 @@
 
 class String {
 public:
-    static std::string replaceString(const std::string& original, const std::string& toReplace, const std::string& replacement) {
+    static std::string replace(const std::string& original, const std::string& toReplace, const std::string& replacement) {
         std::string result = original;
         size pos = 0;
 
