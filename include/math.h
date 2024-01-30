@@ -62,13 +62,13 @@ public:
         static int randint(int low, int high) {
             std::random_device rd;  // Use random_device to seed the generator
             std::mt19937 mt(rd());  // Mersenne Twister 19937 generator
-            std::uniform_int_distribution<int> dist(low, high);  // Uniform distribution between low and high
+            std::uniform_int_distribution<int> dist(low, high);
 
             return dist(mt);
         }
         static double randomDouble(double low, double high) {
-            std::random_device rd;
-            std::mt19937 mt(rd());
+            std::random_device rd; // Use random_device to seed the generator
+            std::mt19937 mt(rd()); // Mersenne Twister 19937 generator
             std::uniform_real_distribution<double> dist(low, high);
             return dist(mt);
         }
