@@ -66,11 +66,5 @@ public:
 
             return dist(mt);
         }
-        static double randomDouble(double low, double high) {
-            std::random_device rd; // Use random_device to seed the generator
-            std::mt19937 mt(rd()); // Mersenne Twister 19937 generator
-            std::uniform_real_distribution<double> dist(low, high);
-            return dist(mt);
-        }
     };
 };
