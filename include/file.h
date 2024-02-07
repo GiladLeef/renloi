@@ -2,6 +2,13 @@
 #include <fstream>
 #include <sstream>
 
+#ifdef _WIN32
+    #include <direct.h> // For Windows mkdir
+    #define mkdir(path, mode) _mkdir(path)
+#else
+    #include <sys/stat.h> // For Linux mkdir
+#endif
+
 class File {
 public:
     template <typename T>
@@ -32,8 +39,13 @@ public:
 
         return content;
     }
+
     static bool createDirectory(const std::string& path) {
-        int status = mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+        #ifdef _WIN32
+            int status = mkdir(path.c_str());
+        #else
+            int status = mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+        #endif
         return (status == 0);
     }
 
