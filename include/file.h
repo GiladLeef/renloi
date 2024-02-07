@@ -1,13 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-
-#ifdef _WIN32
-    #include <direct.h> // For Windows mkdir
-    #define mkdir(path, mode) _mkdir(path)
-#else
-    #include <sys/stat.h> // For Linux mkdir
-#endif
+#include <filesystem>
 
 class File {
 public:
@@ -41,16 +35,16 @@ public:
     }
 
     static bool createDirectory(const std::string& path) {
-        #ifdef _WIN32
-            int status = mkdir(path.c_str());
-        #else
-            int status = mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
-        #endif
-        return (status == 0);
+        try {
+            std::filesystem::create_directory(path);
+            return true;
+        } catch (const std::filesystem::filesystem_error& e) {
+            std::cerr << "Error creating directory " << path << ": " << e.what() << std::endl;
+            return false;
+        }
     }
 
     static bool fileExists(const std::string& filePath) {
-        struct stat buffer;
-        return (stat(filePath.c_str(), &buffer) == 0);
+        return std::filesystem::exists(filePath);
     }
 };
