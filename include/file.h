@@ -32,4 +32,13 @@ public:
 
         return content;
     }
+    static bool createDirectory(const std::string& path) {
+        int status = mkdir(path.c_str(), S_IRWXU | S_IRWXG | S_IROTH | S_IXOTH);
+        return (status == 0);
+    }
+
+    static bool fileExists(const std::string& filePath) {
+        struct stat buffer;
+        return (stat(filePath.c_str(), &buffer) == 0);
+    }
 };
