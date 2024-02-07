@@ -19,4 +19,20 @@ public:
             return "Unknown";
         #endif
     }
+    static std::string getUser() {
+        const char* user = std::getenv("USER");
+        return (user != nullptr) ? user : "Unknown";
+    }
+
+    static std::string getArch() {
+        #ifdef __x86_64__
+            return "x86-64";
+        #elif __i386__
+            return "x86";
+        #elif __arm__
+            return "ARM";
+        #else
+            return "Unknown";
+        #endif
+    }
 };
