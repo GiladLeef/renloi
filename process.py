@@ -1,14 +1,19 @@
 import re
 
 def replace_syntax(input_code):
-    output_code = input_code.replace("int main()", "int main(int argc, char *argv[])")
-    output_code = output_code.replace("File.", "File::")
-    output_code = output_code.replace("Math.", "Math::")
-    output_code = output_code.replace("String.", "String::")
-    output_code = output_code.replace("Net.", "Net::")
-    output_code = output_code.replace("Net.", "Net::")
-    output_code = output_code.replace("ThreadPool.", "ThreadPool::")
-    output_code = output_code.replace("thread.id()", "this_thread::get_id()")
+    replacements = {
+        "int main()": "int main(int argc, char *argv[])",
+        "File.": "File::",
+        "Math.": "Math::",
+        "String.": "String::",
+        "Net.": "Net::",
+        "ThreadPool.": "ThreadPool::",
+        "thread.id()": "this_thread::get_id()"
+    }
+
+    output_code = input_code
+    for old_str, new_str in replacements.items():
+        output_code = output_code.replace(old_str, new_str)
 
     return output_code
     
