@@ -2,12 +2,11 @@ import re
 
 def replace_syntax(input_code):
     output_code = input_code.replace("int main()", "int main(int argc, char *argv[])")
-    output_code = output_code.replace("File.write", "File::write")
-    output_code = output_code.replace("File.read", "File::read")
+    output_code = output_code.replace("File.", "File::")
     output_code = output_code.replace("Math.", "Math::")
     output_code = output_code.replace("String.", "String::")
     output_code = output_code.replace("Net.", "Net::")
-    output_code = output_code.replace("Net.Http.", "Net::Http::")
+    output_code = output_code.replace("Net.", "Net::")
     output_code = output_code.replace("ThreadPool.", "ThreadPool::")
     output_code = output_code.replace("thread.id()", "this_thread::get_id()")
 
