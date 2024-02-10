@@ -1,7 +1,8 @@
 #include <file.h>
 
 int main(){
-    string content = "aaa";
-    file.write("aaa.txt", content);
+    string content = "content";
+    if (File.createDirectory("folder") == true);
+        File.write("folder/file.txt", content);
     return 0;
 }
