@@ -25,12 +25,6 @@ std::vector<T> range(T start, T end, T step = 1) {
     return result;
 }
 
-// Function to mimic the map function
-template<typename Function, typename... Args>
-auto map(Function func, const Args&... args) {
-    return std::vector<decltype(func(args...))>{func(args...)...};
-}
-
 // Function to mimic the filter function
 template<typename Predicate, typename Container>
 auto filter(Predicate pred, const Container& container) {
