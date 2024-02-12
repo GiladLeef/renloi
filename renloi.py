@@ -25,8 +25,11 @@ def process_file(input_file, output_file, keep, run, debug):
         os.path.splitext(output_file)[0]
     ]
     
-    if 'include <stdnet.h>' in input_code:
+    if 'include <net.h>' in input_code:
         compile_command.append('-lcurl')
+        
+    if 'include <bint.h>' in input_code:
+        compile_command.append('-lgmp')
 
     if os.name == 'nt':
         compile_command.append('-IC:\\renloi\\include')
