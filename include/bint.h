@@ -12,11 +12,6 @@ public:
 
     // Constructor from hex or decimal string
     bint(const std::string& val) {
-        initializeFromString(val);
-    }
-
-    // Constructor from hex or decimal string
-    bint(const std::string& val) {
         std::regex hex_pattern("^0x[0-9a-fA-F]+$");
         std::regex decimal_pattern("^\\d+$");
 
