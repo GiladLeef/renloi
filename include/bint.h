@@ -11,22 +11,24 @@ public:
     bint() : value(0) {}
 
     // Constructor from hex or decimal string
-    bint(const std::string& val) {
+    bint(const char* val) {
+        std::string strVal(val);
         std::regex hex_pattern("^0x[0-9a-fA-F]+$");
         std::regex decimal_pattern("^\\d+$");
 
-        if (std::regex_match(val, hex_pattern)) {
+        if (std::regex_match(strVal, hex_pattern)) {
             // Hexadecimal string
-            value = mpz_class(val.c_str() + 2, 16);
-        } else if (std::regex_match(val, decimal_pattern)) {
+            value = mpz_class(strVal.c_str() + 2, 16);
+        } else if (std::regex_match(strVal, decimal_pattern)) {
             // Decimal string
-            value = mpz_class(val);
+            value = mpz_class(strVal);
         } else {
             // Invalid string format, default to 0
             std::cerr << "Error: Invalid string format. Defaulting to 0." << std::endl;
             value = 0;
         }
     }
+
 
     // Arithmetic operators
     bint operator+(const bint& other) const {
