@@ -2,8 +2,8 @@
 #include <bint.h>
 
 int main() {
-    bint a("0x123456789ABCDEF");  // Hexadecimal string
-    bint b("9876543210987654321098765432109876543210");  // Decimal string
+    bint a = "0x123456789ABCDEF";  // Hexadecimal string
+    bint b = "9876543210987654321098765432109876543210";  // Decimal string
 
     print("a: ", a);
     print("b: ", b);
