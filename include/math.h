@@ -1,5 +1,5 @@
-#ifndef math.h
-#define math.h
+#ifndef math_h
+#define math_h
 
 #include <cmath>
 #include <iostream>
@@ -71,4 +71,4 @@ public:
         }
     };
 };
-#endif // math.h
+#endif // math_h
