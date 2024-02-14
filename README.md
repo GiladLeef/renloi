@@ -14,7 +14,7 @@ Renloi is a programming language designed to offer a simpler and more user-frien
 Here's a simple Renloi program that prints "Hello, world!":
 
 ```c++
-#include <std>
+#include <std.h>
 
 int main() {
   print("Hello, world!");
