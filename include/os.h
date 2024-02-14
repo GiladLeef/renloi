@@ -1,3 +1,6 @@
+#ifndef os.h
+#define os.h
+
 #include <iostream>
 #include <cstdlib>
 
@@ -36,3 +39,5 @@ public:
         #endif
     }
 };
+
+#endif // os.h
