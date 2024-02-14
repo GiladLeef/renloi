@@ -1,3 +1,6 @@
+#ifndef thread.h
+#define thread.h
+
 #include <iostream>
 #include <thread>
 #include <vector>
@@ -85,3 +88,5 @@ private:
 ThreadPool createThreadPool(size num_threads) {
     return ThreadPool(num_threads);
 }
+
+#endif // thread.h
