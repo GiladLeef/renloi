@@ -1,5 +1,5 @@
-#ifndef os.h
-#define os.h
+#ifndef os_h
+#define os_h
 
 #include <iostream>
 #include <cstdlib>
@@ -40,4 +40,4 @@ public:
     }
 };
 
-#endif // os.h
+#endif // os_h
