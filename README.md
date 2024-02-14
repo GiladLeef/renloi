@@ -1,4 +1,4 @@
-## Renloi: An easier API for C++ compilation
+## Renloi: An easier alternative to C++
 
 Renloi is a programming language designed to offer a simpler and more user-friendly development experience compared to C++, while still leveraging its power and performance through compilation. 
 
