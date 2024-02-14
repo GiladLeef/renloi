@@ -1,5 +1,5 @@
-#ifndef thread.h
-#define thread.h
+#ifndef thread_h
+#define thread_h
 
 #include <iostream>
 #include <thread>
@@ -89,4 +89,4 @@ ThreadPool createThreadPool(size num_threads) {
     return ThreadPool(num_threads);
 }
 
-#endif // thread.h
+#endif // thread_h
