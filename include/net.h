@@ -1,5 +1,5 @@
-#ifndef net.h
-#define net.h
+#ifndef net_h
+#define net_h
 
 #include <iostream>
 #include <string>
@@ -75,4 +75,4 @@ public:
     };
 };
 
-#endif // net.h
+#endif // net_h
