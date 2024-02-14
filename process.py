@@ -7,8 +7,10 @@ def replace_syntax(input_code):
         "Math.": "Math::",
         "String.": "String::",
         "Net.": "Net::",
+        "sequence.": "sequence::",
         "ThreadPool.": "ThreadPool::",
         "thread.id()": "this_thread::get_id()"
+
     }
 
     output_code = input_code
