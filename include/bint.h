@@ -1,3 +1,6 @@
+#ifndef bint.h
+#define bint.h
+
 #include <iostream>
 #include <gmpxx.h>
 #include <regex>
@@ -252,3 +255,5 @@ public:
         return os;
     }
 };
+
+#endif // bint.h
