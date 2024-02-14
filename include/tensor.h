@@ -1,5 +1,5 @@
-#ifndef tensor.h
-#define tensor.h
+#ifndef tensor_h
+#define tensor_h
 
 #include <iostream>
 #include <vector>
@@ -49,4 +49,4 @@ public:
     }
 };
 
-#endif // tensor.h
+#endif // tensor_h
