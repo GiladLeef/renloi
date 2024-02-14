@@ -1,3 +1,6 @@
+#ifndef net.h
+#define net.h
+
 #include <iostream>
 #include <string>
 #include <curl/curl.h>
@@ -71,3 +74,5 @@ public:
         }
     };
 };
+
+#endif // net.h
