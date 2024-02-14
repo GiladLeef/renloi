@@ -1,3 +1,6 @@
+#ifndef std.h
+#define std.h
+
 #include <iostream>
 #include <vector>
 #include <string>
@@ -91,3 +94,5 @@ public:
     }
 
 };
+
+#endif // std.h
