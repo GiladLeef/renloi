@@ -1,3 +1,6 @@
+#ifndef math.h
+#define math.h
+
 #include <cmath>
 #include <iostream>
 #include <cstdint>
@@ -68,3 +71,4 @@ public:
         }
     };
 };
+#endif // math.h
