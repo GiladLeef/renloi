@@ -1,5 +1,5 @@
-#ifndef std.h
-#define std.h
+#ifndef std_h
+#define std_h
 
 #include <iostream>
 #include <vector>
@@ -95,4 +95,4 @@ public:
 
 };
 
-#endif // std.h
+#endif // std_h
