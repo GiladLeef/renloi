@@ -1,5 +1,5 @@
-#ifndef file.h
-#define file.h
+#ifndef file_h
+#define file_h
 
 #include <iostream>
 #include <fstream>
@@ -52,4 +52,4 @@ public:
     }
 };
 
-#endif // file.h
+#endif // file_h
