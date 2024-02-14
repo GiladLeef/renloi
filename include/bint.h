@@ -1,5 +1,5 @@
-#ifndef bint.h
-#define bint.h
+#ifndef bint_h
+#define bint_h
 
 #include <iostream>
 #include <gmpxx.h>
@@ -256,4 +256,4 @@ public:
     }
 };
 
-#endif // bint.h
+#endif // bint_h
