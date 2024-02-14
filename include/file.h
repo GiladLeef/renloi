@@ -1,3 +1,6 @@
+#ifndef file.h
+#define file.h
+
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -48,3 +51,5 @@ public:
         return std::filesystem::exists(filePath);
     }
 };
+
+#endif // file.h
