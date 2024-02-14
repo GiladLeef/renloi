@@ -1,3 +1,6 @@
+#ifndef tensor.h
+#define tensor.h
+
 #include <iostream>
 #include <vector>
 
@@ -45,3 +48,5 @@ public:
         }
     }
 };
+
+#endif // tensor.h
