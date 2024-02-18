@@ -1,5 +1,5 @@
-#ifndef SET_H
-#define SET_H
+#ifndef set_h
+#define set_h
 
 #include <set>
 #include <iostream>
@@ -38,4 +38,4 @@ public:
         std::cout << std::endl;
     }
 };
-#endif // SET_H
+#endif // set_h
