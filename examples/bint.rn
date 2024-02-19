@@ -4,9 +4,10 @@
 int main() {
     bint a = "0x123456789ABCDEF";  // Hexadecimal string
     bint b = "9876543210987654321098765432109876543210";  // Decimal string
+    bint c = (a + b) % 17;
 
     print("a: ", a);
     print("b: ", b);
-
+    print("(a + b) % 17 = ", c);
     return 0;
 }
