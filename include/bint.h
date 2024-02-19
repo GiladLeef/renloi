@@ -126,7 +126,7 @@ public:
         return result;
     }
 
-    // Modulus operator
+    // Modulus operator for bint
     bint operator%(const bint& other) const {
         if (other.value != 0) {
             bint result;
@@ -138,7 +138,18 @@ public:
             return bint();
         }
     }
-
+    // Overload modulus operator for int
+    bint operator%(int other) const {
+        if (other != 0) {
+            bint result;
+            result.value = value % other;
+            return result;
+        } else {
+            // Handle modulus by zero
+            std::cerr << "Error: Modulus by zero." << std::endl;
+            return bint();
+        }
+    }
     // Comparison operators
     bool operator==(const bint& other) const {
         return value == other.value;
