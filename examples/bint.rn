@@ -2,6 +2,7 @@
 #include <bint.h>
 
 int main() {
+    // General example
     bint a = "0x123456789ABCDEF";  // Hexadecimal string
     bint b = "9876543210987654321098765432109876543210";  // Decimal string
     bint c = (a + b) % 17;
@@ -9,5 +10,21 @@ int main() {
     print("a: ", a);
     print("b: ", b);
     print("(a + b) % 17 = ", c);
+
+    // Another example: Test for Mersenne prime
+    bint s = 4;
+    int p = 9941; 
+     bint M = (bint(1) << p) - 1;
+    bint M2 = M * M; 
+
+    for (int i = 0; i < p - 2; ++i) {
+        s = (s * s - 2) % M;
+    }
+
+    if (s == 0)
+        std::cout << "Mersenne number 2^" << p << " - 1 is prime." << std::endl;
+    else
+        std::cout << "Mersenne number 2^" << p << " - 1 is composite." << std::endl;
+
     return 0;
 }
