@@ -13,6 +13,9 @@ public:
     // Constructors
     bint() : value(0) {}
 
+    // Constructor from int
+    bint(int val) : value(val) {}
+
     // Constructor from hex or decimal string
     bint(const char* val) {
         std::string strVal(val);
@@ -34,6 +37,32 @@ public:
 
 
     // Arithmetic operators
+
+    // Addition with int
+    bint operator+(int other) const {
+        return *this + bint(other);
+    }
+
+    // Subtraction with int
+    bint operator-(int other) const {
+        return *this - bint(other);
+    }
+
+    // Multiplication with int
+    bint operator*(int other) const {
+        return *this * bint(other);
+    }
+
+    // Division by int
+    bint operator/(int other) const {
+        return *this / bint(other);
+    }
+
+    // Conversion operator to int
+    operator int() const {
+        return value.get_si();
+    }
+
     bint operator+(const bint& other) const {
         bint result;
         result.value = value + other.value;
