@@ -288,7 +288,35 @@ public:
     operator std::string() const {
         return value.get_str();
     }
+    // Equality operator for int
+    bool operator==(int other) const {
+        return value == mpz_class(other);
+    }
 
+    // Inequality operator for int
+    bool operator!=(int other) const {
+        return value != mpz_class(other);
+    }
+
+    // Less than operator for int
+    bool operator<(int other) const {
+        return value < mpz_class(other);
+    }
+
+    // Less than or equal operator for int
+    bool operator<=(int other) const {
+        return value <= mpz_class(other);
+    }
+
+    // Greater than operator for int
+    bool operator>(int other) const {
+        return value > mpz_class(other);
+    }
+
+    // Greater than or equal operator for int
+    bool operator>=(int other) const {
+        return value >= mpz_class(other);
+    }
     // Output operator
     friend std::ostream& operator<<(std::ostream& os, const bint& num) {
         os << num.value.get_str();
