@@ -22,9 +22,9 @@ int main() {
     }
 
     if (s == 0)
-        std::cout << "Mersenne number 2^" << p << " - 1 is prime." << std::endl;
+        print("Mersenne number 2^", p, " - 1 is prime.");
     else
-        std::cout << "Mersenne number 2^" << p << " - 1 is composite." << std::endl;
+        print("Mersenne number 2^", p, " - 1 is composite.");
 
     return 0;
 }
