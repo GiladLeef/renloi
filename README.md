@@ -21,3 +21,8 @@ int main() {
   return 0;
 }
 ```
+In this example:
+- `#include <std.h>` imports a standard library module.
+- `int main()` defines the entry point of the program.
+- `print("Hello, world!");` outputs "Hello, world!" to the console.
+- `return 0;` indicates successful program completion.
