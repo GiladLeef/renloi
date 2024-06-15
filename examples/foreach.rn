@@ -1,7 +1,7 @@
 #include <std.h>
 
 int main() {
-  int array[3];
+  int array[3] = {11, 12, 13};
   for (int i : array){
     print(i);
   }
