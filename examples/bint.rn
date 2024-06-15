@@ -14,7 +14,7 @@ int main() {
     // Another example: Test for Mersenne prime
     bint s = 4;
     int p = 9941; 
-     bint M = (bint(1) << p) - 1;
+    bint M = (bint(1) << p) - 1;
     bint M2 = M * M; 
 
     for (int i = 0; i < p - 2; ++i) {
