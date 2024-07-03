@@ -34,7 +34,7 @@ def add_namespace_std(code_content):
         # Find the index of the last #include line
         last_include_index = max([i for i, line in enumerate(new_lines) if re.match(r'^\s*#include', line)], default=-1)
         # Insert 'using namespace std;' after the last #include line
-        new_lines.insert(last_include_index + 1, 'using namespace std;')
+        new_lines.insert(last_include_index + 1, '\nusing namespace std;')
     else:
         new_lines.insert(0, 'using namespace std;')
 
