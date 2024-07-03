@@ -22,7 +22,7 @@ int main() {
 }
 ```
 In this example:
-- `#include <std.h>` imports a standard library module.
+- `#include <std.h>` imports the standard library header file.
 - `int main()` defines the entry point of the program.
 - `print("Hello, world!");` outputs "Hello, world!" to the console.
 - `return 0;` indicates successful program completion.
