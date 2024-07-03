@@ -322,6 +322,13 @@ public:
         os << num.value.get_str();
         return os;
     }
+   // Input operator
+   friend std::istream& operator>>(std::istream& is, bint& num) {
+       std::string input;
+       is >> input;
+       num = bint(input.c_str());
+       return is;
+   }
 };
 
 #endif // bint_h
