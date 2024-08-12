@@ -1,23 +1,37 @@
 import re
 
 def replace_syntax(input_code):
-    replacements = {
-        "int main()": "int main(int argc, char *argv[])",
-        "File.": "File::",
-        "Math.": "Math::",
-        "String.": "String::",
-        "Net.": "Net::",
-        "sequence.": "sequence::",
-        "ThreadPool.": "ThreadPool::",
-        "thread.id()": "this_thread::get_id()"
-
-    }
-
-    output_code = input_code
-    for old_str, new_str in replacements.items():
-        output_code = output_code.replace(old_str, new_str)
-
-    return output_code
+    # Regex to match text within quotes (strings) and comments
+    string_pattern = r'(\".*?\")'
+    comment_pattern = r'(\/\/.*?$|\/\*.*?\*\/)'
+    
+    # Temporary placeholders for strings and comments
+    placeholders = []
+    
+    def replace_in_code(match):
+        # Add non-matching parts to the result
+        return match.group(0)
+    
+    def add_placeholder(match):
+        # Replace matches with placeholders
+        placeholders.append(match.group(0))
+        return f'__PLACEHOLDER_{len(placeholders) - 1}__'
+    
+    # Replace strings and comments with placeholders
+    code_with_placeholders = re.sub(string_pattern, add_placeholder, input_code, flags=re.DOTALL | re.MULTILINE)
+    code_with_placeholders = re.sub(comment_pattern, add_placeholder, code_with_placeholders, flags=re.DOTALL | re.MULTILINE)
+    
+    # Replace scope resolution operator
+    code_with_scope_replacement = code_with_placeholders.replace("::", ".")
+    
+    # Restore original strings and comments
+    def restore_placeholder(match):
+        index = int(match.group(1))
+        return placeholders[index]
+    
+    final_code = re.sub(r'__PLACEHOLDER_(\d+)__', restore_placeholder, code_with_scope_replacement)
+    
+    return final_code
     
 def add_namespace_std(code_content):
     lines = code_content.split('\n')
