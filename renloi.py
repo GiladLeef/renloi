@@ -45,24 +45,16 @@ def main():
     parser = argparse.ArgumentParser(
         description="Renloi Programming Language Compiler."
     )
-    parser.addArgument("input_file", help="Input file path")
-    parser.addArgument(
-        "-output_file",
-        help="Output file path (default: input file name without extension)",
-        default=None,
-    )
-    parser.addArgument("-run", action="store_true", help="Run the compiled code")
-    parser.addArgument(
-        "-keep", action="store_true", help="Keep the source file after compilation"
-    )
-    parser.addArgument(
-        "-debug", action="store_true", help="Show g++ compilation warnings/errors"
-    )
-    args = parser.parseArgs()
-    if args.outputFile is None:
-        args.outputFile = os.path.splitext(os.path.basename(args.inputFile))[0]
-    processFile(args.inputFile, args.outputFile, args.keep, args.run, args.debug)
+    parser.add_argument("input", help="Input file path")
+    parser.add_argument("--output", help="Output file path (default: input file name without extension)",default=None,)
+    parser.add_argument("-run", action="store_true", help="Run the compiled code")
+    parser.add_argument("--keep", action="store_true", help="Keep the source file after compilation")
+    parser.add_argument("--debug", action="store_true", help="Show g++ compilation warnings/errors")
+    args = parser.parse_args()
+    if args.output is None:
+        args.output = os.path.splitext(os.path.basename(args.input))[0]
+    processFile(args.input, args.output, args.keep, args.run, args.debug)
 
 
-if Name == "__main__":
+if __name__ == "__main__":
     main()
