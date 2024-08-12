@@ -1,38 +1,26 @@
 import re
 
+def replaceSyntax(cpp_code):
+    def replace_match(match):
+        before, dot, after = match.groups()
+        
+        # Don't replace dots in include statements
+        if before.lower() == '#include' or after.lower() in ['h', 'hpp', 'cpp']:
+            return f"{before}.{after}"
+        
+        # Check if before and after are valid C++ identifiers
+        if re.match(r'^[a-zA-Z_]\w*$', before) and re.match(r'^[a-zA-Z_]\w*', after):
+            return f"{before}::{after}"
+        else:
+            return f"{before}.{after}"
 
-def replaceSyntax(inputCode):
-    stringPattern = '(\\".*?\\")'
-    commentPattern = "(\\/\\/.*?$|\\/\\*.*?\\*\\/)"
-    placeholders = []
-
-    def replaceInCode(match):
-        return match.group(0)
-
-    def addPlaceholder(match):
-        placeholders.append(match.group(0))
-        return f"__PLACEHOLDER_{len(placeholders) - 1}__"
-
-    codeWithPlaceholders = re.sub(
-        stringPattern, addPlaceholder, inputCode, flags=re.DOTALL | re.MULTILINE
-    )
-    codeWithPlaceholders = re.sub(
-        commentPattern,
-        addPlaceholder,
-        codeWithPlaceholders,
-        flags=re.DOTALL | re.MULTILINE,
-    )
-    codeWithScopeReplacement = codeWithPlaceholders.replace("::", ".")
-
-    def restorePlaceholder(match):
-        index = int(match.group(1))
-        return placeholders[index]
-
-    finalCode = re.sub(
-        "__PLACEHOLDER_(\\d+)__", restorePlaceholder, codeWithScopeReplacement
-    )
-    return finalCode
-
+    # Pattern to match dots between potential identifiers, including #include statements
+    pattern = r'(\b(?:#include\b)?[a-zA-Z_]\w*)(\.)([a-zA-Z_]\w*\b)'
+    
+    # Replace . with :: only in appropriate situations
+    modified_code = re.sub(pattern, replace_match, cpp_code)
+    
+    return modified_code
 
 def addNamespaceStd(codeContent):
     lines = codeContent.split("\n")
