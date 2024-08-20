@@ -317,6 +317,22 @@ public:
     bool operator>=(int other) const {
         return value >= mpz_class(other);
     }
+    // Method to compute modular inverse
+    bint modInverse(const bint& modulus) const {
+        bint result;
+        if (modulus.value == 0) {
+            std::cerr << "Error: Modulus is zero. Modular inverse does not exist." << std::endl;
+            return result; // Default to 0 or handle as appropriate
+        }
+
+        // mpz_invert sets result.value to the modular inverse of value modulo modulus.value if it exists
+        if (mpz_invert(result.value.get_mpz_t(), value.get_mpz_t(), modulus.value.get_mpz_t()) == 0) {
+            std::cerr << "Error: Modular inverse does not exist." << std::endl;
+            result.value = 0;
+        }
+
+        return result;
+    }
     // Output operator
     friend std::ostream& operator<<(std::ostream& os, const bint& num) {
         os << num.value.get_str();
