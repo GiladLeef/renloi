@@ -327,7 +327,6 @@ public:
 
         // mpz_invert sets result.value to the modular inverse of value modulo modulus.value if it exists
         if (mpz_invert(result.value.get_mpz_t(), value.get_mpz_t(), modulus.value.get_mpz_t()) == 0) {
-            std::cerr << "Error: Modular inverse does not exist." << std::endl;
             result.value = 0;
         }
 
