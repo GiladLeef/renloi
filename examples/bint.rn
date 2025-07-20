@@ -1,8 +1,8 @@
 import bint
 
 int main(){
-    bint a = 10;
-    bint b = 20;
+    bint a = 0x1000000000000000000000;
+    bint b = 200000000000000000000000;
     bint c = a + b;
     print(c);
     return 0;

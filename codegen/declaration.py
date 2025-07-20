@@ -47,8 +47,22 @@ class DeclarationCodegen:
         addr = self.builder.alloca(varType, name=node.name)
 
         if node.init:
-            initVal = self.codegen(node.init)
-            initVal = self.convertValue(initVal, initVal.type, node.datatypeName)
+            used_custom = False
+            try:
+                mod = __import__(f"stdlib.{node.datatypeName}.{node.datatypeName}", fromlist=["codegen_literal"])
+                if hasattr(mod, "codegen_literal"):
+                    try:
+                        result = mod.codegen_literal(self, node.init)
+                        if result is not None:
+                            initVal = result
+                            used_custom = True
+                    except NotImplementedError:
+                        pass
+            except ImportError:
+                pass
+            if not used_custom:
+                initVal = self.codegen(node.init)
+                initVal = self.convertValue(initVal, initVal.type, node.datatypeName)
             self.builder.store(initVal, addr)
 
         self.funcSymtab[node.name] = {"addr": addr, "datatypeName": node.datatypeName}

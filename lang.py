@@ -14,6 +14,7 @@ tokens = [
     {"type": "CHAR", "regex": r"\bchar\b"},
     {"type": "RETURN", "regex": r"\breturn\b"},
     {"type": "FLOAT_NUMBER", "regex": r"\d+\.\d+"},
+    {"type": "HEX_NUMBER", "regex": r"0x[0-9a-fA-F]+"},
     {"type": "NUMBER", "regex": r"\d+"},
     {"type": "CHAR_LITERAL", "regex": r"'[^']'"},
     {"type": "ID", "regex": r"[a-zA-Z_][a-zA-Z0-9_]*"},
@@ -133,6 +134,7 @@ statementParseMap = {
 
 factorParseMap = {
     "NUMBER": {"method": "parseLiteral", "args": ["NUMBER", "Num"]},
+    "HEX_NUMBER": {"method": "parseLiteral", "args": ["HEX_NUMBER", "Num"]},
     "FLOAT_NUMBER": {"method": "parseLiteral", "args": ["FLOAT_NUMBER", "FloatNum"]},
     "STRING": {"method": "parseLiteral", "args": ["STRING", "String"]},
     "CHAR_LITERAL": {"method": "parseLiteral", "args": ["CHAR_LITERAL", "Char"]},

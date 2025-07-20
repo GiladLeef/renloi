@@ -27,4 +27,16 @@ module.mapping["fromInt"] = "bint_from_int"
 module.functions["fromString"] = ("bint", ["string"])
 module.mapping["fromString"] = "bint_from_string"
 
+def codegen_literal(codegen, node):
+    if hasattr(node, '__class__') and node.__class__.__name__ in ("Num", "HEX_NUMBER"):
+        value = node.value
+        str_val = str(value)
+        str_ptr = codegen.createStringConstant(str_val)
+        bint_funcs = codegen.externalFunctions.get("bint", {})
+        from_string_func = bint_funcs.get("fromString")
+        if from_string_func is None:
+            raise RuntimeError("bint_from_string function not registered")
+        return codegen.builder.call(from_string_func, [str_ptr], name="bintFromString")
+    raise NotImplementedError("bint.codegen_literal only supports Num/HEX_NUMBER nodes")
+
 module = module.export()
